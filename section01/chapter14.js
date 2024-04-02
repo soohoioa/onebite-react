@@ -17,12 +17,12 @@ function funcA() {
 if (true) {
     let c = 1; // 지역 스코프
 }
-// console.log(c); 
+console.log(c); 
 
 for (let i = 0; i < 10; i++) {
     let d = 1; // 지역 스코프
 }
-// console.log(d);
+console.log(d);
 
 // 함수도 변수처럼 지역변수를 갖게된다
 // 예외적으로 조건문, 반복문에서는 지역 스코프를 갖지 않는다.

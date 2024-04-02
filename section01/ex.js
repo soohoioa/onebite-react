@@ -1,15 +1,9 @@
-function add(num1, num2) {
-  return num1 + num2;
+if (true) {
+  let c = 1; // 지역 스코프
 }
+console.log(c); 
 
-function subtract(num1, num2) {
-  return num1 - num2;
+for (let i = 0; i < 10; i++) {
+  let d = 1; // 지역 스코프
 }
-
-function calculate(num1, num2, operation) {
-  const result = operation(num1, num2);
-  console.log(result);
-}
-
-calculate(5, 3, add);
-calculate(5, 3, subtract);
+console.log(d);

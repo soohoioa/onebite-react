@@ -2,7 +2,7 @@
 let arr = [1, 2, 3];
 
 let [one, two, three, four = 4] = arr;
-console.log(one, two, three, four);
+//console.log(one, two, three, four);
 
 // 2. 객체의 구조 분해 할당
 let person = {

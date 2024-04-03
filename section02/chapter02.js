@@ -12,8 +12,6 @@ console.log(returnFalse() && returnTrue()); // 출력 : False 함수, false
 console.log(returnTrue() && returnFalse()); // 출력 : True 함수, False 함수, false
 console.log(returnTrue() || returnFalse()); // 출력 : True 함수, true
 
-console.log("------");
-
 function returnFalse() {
   console.log("False 함수");
   return undefined;

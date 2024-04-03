@@ -9,7 +9,7 @@ let f7 = 0n; // 아주 큰 숫자를 저장할 때 사용
 // 위 값들은 Falsy한 값으로써 조건문에서는 거짓으로 평가된다.
 
 if (!f1) {
-  console.log("Falsy");
+  //console.log("Falsy");
 }
 
 // 2. Truthy한 값
@@ -22,7 +22,7 @@ let t5 = () => {};
 // 문자열, 숫자값, 객체, 함수 모두 조건식에서는 참으로 평가된다.
 
 if (t1) {
-  console.log("Truthy");
+  //console.log("Truthy");
 }
 
 // 3. 활용 사례

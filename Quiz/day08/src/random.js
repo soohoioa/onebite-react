@@ -1,4 +1,4 @@
-import Chance from "Chance";
+import Chance from "chance";
 const change = new Chance();
 
 /* chance를 이용해 무작위 이름을 생성해 반환 */

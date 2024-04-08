@@ -43,8 +43,9 @@ const Register = () => {
       </div>
     </div>
   )
-  
+
 };
+
 
 export default Register;
 
@@ -96,7 +97,7 @@ const Register = () => {
       </div>
 
       <div>
-        <textarea value={bio} onChange={onChabgeBio} />
+        <textarea value={bio} onChange={onChangeBio} />
       </div>
       {bio}
     </div>

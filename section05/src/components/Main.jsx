@@ -5,19 +5,31 @@ const Main = () => {
     name: "몽블랑",
     isLogin: true,
   };
+  
+  if (user.isLogin) {
+    return <div className="logout">로그아웃</div>;
+  } else {
+    return <div>로그인</div>;
+  } 
+  
+  };
+  
+  export default Main;
+  
+  /**
+삼항연산자가 아닌 더 깔끔하게 만들고 싶다면?
 
-// 삼항연산자가 아닌 더 깔끔하게 만들고 싶다면?
-//   return (
-//     <>
-//       { user.isLogin ? <div>로그아웃</div> : <div>로그인</div> }
-//     </>
-//   );
+  return (
+    <>
+      { user.isLogin ? <div>로그아웃</div> : <div>로그인</div> }
+    </>
+  );
 
-  // if (user.isLogin) {
-  //   return <div>로그아웃</div>;
-  // } else {
-  //   return <div>로그인</div>;
-  // } // 이런 식으로 사용이 가능하다. 
+  if (user.isLogin) {
+    return <div>로그아웃</div>;
+  } else {
+    return <div>로그인</div>;
+  } // 이런 식으로 사용이 가능하다. 
 
 
 // DOM 요소 스타일 적용 방법
@@ -39,7 +51,7 @@ if (user.isLogin) {
 };
 
 export default Main;
-/**
+
 자바스크립트의 값을 html로 렌더링 하고 싶다면 {} 안에 적어주면 된다. 
 {} 안에는 숫자, 문자열, 삼항연산자 등 값으로써 평가될 수 있는 식이라면 무엇이든디 다 넣어줄 수 있다. 
 

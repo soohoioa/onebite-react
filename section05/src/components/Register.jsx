@@ -1,28 +1,52 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 // 간단한 회원가입 폼
 // 이름, 생년월일, 국적, 자기소개
 
 const Register = () => {
 
-  const [input, setInput] = useState({ // 정리 : 이렇게 비슷한 state가 있을때는 하나의 객체 값으로 묶어서 하나의 state로 통합해서 관리하면 관리가 편하다. 
+  const [input, setInput] = useState({
     name: "", // 이름
     birth: "", // 생일
     country: "", // 국적
     bio: "" // 자기소개
   });
 
+  const countRef = useRef(0);
+  // 컴포넌트 내부에서 렌더링에 영향을 미치지 않아야 하는 변수를 생성할 때 활용
+
+  const inputRef = useRef();
+
   const onChange = (e) => { // 통합 이벤트 핸들러
+    countRef.current++;
+    console.log(countRef.current);
+
     console.log(e.target.name, e.target.value);
     setInput({
       ...input,
       [e.target.name] : e.target.value,
     })
-  } // 정리 : 여러개의 비슷하게 생긴 이벤트 핸들러들은 통합 이벤트 핸들러로 묶어줄 수 있다. 
+  } 
+
+  const onsubmit = () => {
+    if (input.name === "" ) {
+      // 이름을 입력하는 DOM 요소 포커스 (포커스 : 선택된 상자로 만드는 것)
+      //console.log(inputRef.current);
+      inputRef.current.focus();
+    }
+  };
 
   return (
     <div>
+
+      {/* <button onClick={() => {
+        refObj.current++;
+        console.log(refObj.current);
+      }}>
+        ref + 1
+      </button> */}
+
       <div>
-        <input name="name" value={input.name} onChange={onChange} placeholder={"이름"} />
+        <input ref={inputRef} name="name" value={input.name} onChange={onChange} placeholder={"이름"} />
       </div>
 
       <div>
@@ -41,8 +65,18 @@ const Register = () => {
       <div>
         <textarea name="bio" value={input.bio} onChange={onChange} />
       </div>
+
+      <button onClick={onsubmit}>
+        제출
+      </button>
+
+
+
+
     </div>
-  )
+
+    
+  );
 
 };
 
@@ -180,7 +214,57 @@ const Register = () => {
  */
 
 /**
-3. 세번째 수업, 이벤트 함수들도 한곳으로 모아서 관리
+3. 세번째 수업, 이벤트함수들도 한번에 모아서 정리
 
+import { useState } from "react";
+// 간단한 회원가입 폼
+// 이름, 생년월일, 국적, 자기소개
+
+const Register = () => {
+
+  const [input, setInput] = useState({ // 정리 : 이렇게 비슷한 state가 있을때는 하나의 객체 값으로 묶어서 하나의 state로 통합해서 관리하면 관리가 편하다. 
+    name: "", // 이름
+    birth: "", // 생일
+    country: "", // 국적
+    bio: "" // 자기소개
+  });
+
+  const onChange = (e) => { // 통합 이벤트 핸들러
+    console.log(e.target.name, e.target.value);
+    setInput({
+      ...input,
+      [e.target.name] : e.target.value,
+    })
+  } // 정리 : 여러개의 비슷하게 생긴 이벤트 핸들러들은 통합 이벤트 핸들러로 묶어줄 수 있다. 
+
+  return (
+    <div>
+      <div>
+        <input name="name" value={input.name} onChange={onChange} placeholder={"이름"} />
+      </div>
+
+      <div>
+        <input name="birth" value={input.birth} onChange={onChange} type="date" />
+      </div>
+
+      <div>
+        <select name="country" value={input.country} onChange={onChange} >
+          <option value=""></option>
+          <option value="kr">한국</option>
+          <option value="us">미국</option>
+          <option value="uk">영국</option>
+        </select>
+      </div>
+
+      <div>
+        <textarea name="bio" value={input.bio} onChange={onChange} />
+      </div>
+    </div>
+  )
+
+};
+
+
+export default Register;
 
  */

@@ -1,23 +1,30 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const OrderEditor = () => {
 
   const [input, setInput] = useState({
     menu: "",
     address: "",
-    request: ""
+    request: "",
   });
 
-  const onChange = (e) => {
+  const addressRef = useRef();
+
+  const onChangeInput = (e) => {
     setInput({
       ...input,
-      [e.target.menu] : e.target.value,
-    })
-  }
+      [e.target.name] : e.target.value,
+    });
+  };
  
   const onSubmit = () => {
+    if (addressRef.current.value === "") {
+      addressRef.current.focus();
+      return;
+    }
+    
     alert(
-      `주문이 완료되었습니다 메뉴 : ${menu}, 주소 : ${address}, 요청사항: ${request}`
+      `주문이 완료되었습니다 메뉴 : ${input.menu}, 주소 : ${input.address}, 요청사항: ${input.request}`
     );
   };
 
@@ -30,7 +37,7 @@ const OrderEditor = () => {
         <div style={{ marginBottom: 5, fontSize: 14 }}>
           메뉴 선택
         </div>
-        <select value={menu} onChange={onChangeMenu} style={{ width: 300, padding: 5 }}>
+        <select name="menu" value={input.menu} onChange={onChangeInput} style={{ width: 300, padding: 5 }}>
           <option value={"족발"}>족발</option>
           <option value={"떡볶이"}>떡볶이</option>
           <option value={"아이스크림"}>아이스크림</option>
@@ -42,7 +49,8 @@ const OrderEditor = () => {
           배달 주소
         </div>
         <input
-          value={address} onChange={onChangeAddress}
+          ref={addressRef} name="address"
+          value={input.address} onChange={onChangeInput}
           style={{ width: 300, padding: 5 }}
           placeholder="주소) 서울특별시 xx동 .."
         />
@@ -52,7 +60,8 @@ const OrderEditor = () => {
           배달 요청사항
         </div>
         <textarea
-          value={request} onChange={onChangeRequest}
+          name="request"
+          value={input.request} onChange={onChangeInput}
           style={{ width: 300, padding: 5 }}
           placeholder="배달 요청사항을 써 주세요..."
         />

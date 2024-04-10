@@ -1,0 +1,8 @@
+.App {
+  width: 500px;
+  margin: 0 auto;
+
+  display: flex; /* 'flex'는 유연하게 요소들의 배치를 조절할 수 있다. */
+  flex-direction: column;
+  gap: 10px; /* 'gap' 라는 속성은 'display: flex' 경우에만 사용 가능하다. */
+}

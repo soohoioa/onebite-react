@@ -1,7 +1,7 @@
 import "./App.css";
 import ContactEditor from "./components/ContactEditor";
 import ContactList from "./components/ContactList";
-import { useReducer, useRef, useCallback } from "react";
+import { useReducer, useRef, useCallback, createContext, useMemo } from "react";
 
 const mockData = [
   {
@@ -27,11 +27,13 @@ const reducer = (state, action) => {
   }
 };
 
+export const StateContext = createContext();
+export const DispatchContext = createContext();
+
 function App() {
   const [contacts, dispatch] = useReducer(reducer, mockData);
   const idRef = useRef(2);
 
-  // 최적화 useCallback
   const onCreate = useCallback((name, content) => {
     dispatch({
       type: "CREATE",
@@ -43,7 +45,6 @@ function App() {
     });
   }, []);
 
-  // 최적화 useCallback
   const onDelete = useCallback((targetId) => {
     dispatch({
       type: "DELETE",
@@ -51,15 +52,24 @@ function App() {
     });
   }, []);
 
+  const memoizedDispatch = useMemo(() => {
+    return { onCreate, onDelete };
+  }, []);
+
   return (
     <div className="App">
       <h2>Contact List</h2>
-      <section>
-        <ContactEditor onCreate={onCreate} />
-      </section>
-      <section>
-        <ContactList contacts={contacts} onDelete={onDelete} />
-      </section>
+
+      <StateContext.Provider value={contacts}>
+        <DispatchContext.Provider value={memoizedDispatch}>
+          <section>
+            <ContactEditor />
+          </section>
+          <section>
+            <ContactList />
+          </section>
+        </DispatchContext.Provider>
+      </StateContext.Provider>
     </div>
   );
 }

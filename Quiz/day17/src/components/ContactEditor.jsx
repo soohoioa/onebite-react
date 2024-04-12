@@ -1,7 +1,9 @@
-import { useState, memo } from "react";
+import { useState, memo, useContext } from "react";
 import "./ContactEditor.css";
+import { DispatchContext } from "../App";
 
-function ContactEditor({ onCreate }) {
+function ContactEditor() {
+  const { onCreate } = useContext(DispatchContext);
   const [state, setState] = useState({
     name: "",
     content: "",

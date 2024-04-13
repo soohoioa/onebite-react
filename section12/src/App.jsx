@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Diary from "./pages/Diary";
 import New from "./pages/New";
 import Notfound from "./pages/Notfound";
+import Edit from "./pages/Edit";
 
 /**
 useNavigate : 페이지를 실제로 이동시키는 navigate함수를 반환한다. 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/new" element={<New />} />
         <Route path="/diray/:id" element={<Diary />} />
         <Route path="*" element={<Notfound />} />
+        <Route path="/edit/:id" element={<Edit />} />
       </Routes>
     </>
   );

@@ -28,6 +28,7 @@ function App() {
   };
   return (
     <>
+      {/* 
       <Header
         title={"Header"}
         leftChild={<Button text={"Left"} />}
@@ -38,7 +39,7 @@ function App() {
       <Button text={"123"} type={"POSITIVE"} onClick={() => {}} />
 
       <Button text={"123"} type={"NEGATIVE"} onClick={() => {}} />
-      {/* 
+      
       <div>
         <img src={getEmotionImage(1)} />
         <img src={getEmotionImage(2)} />
@@ -64,8 +65,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/new" element={<New />} />
         <Route path="/diray/:id" element={<Diary />} />
-        <Route path="*" element={<Notfound />} />
         <Route path="/edit/:id" element={<Edit />} />
+        <Route path="*" element={<Notfound />} />
       </Routes>
     </>
   );

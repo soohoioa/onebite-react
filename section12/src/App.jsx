@@ -5,6 +5,10 @@ import Diary from "./pages/Diary";
 import New from "./pages/New";
 import Notfound from "./pages/Notfound";
 import Edit from "./pages/Edit";
+import Button from "./components/Button";
+import Header from "./components/Header";
+
+import { getEmotionImage } from "./util/get-emotion-image";
 
 /**
 useNavigate : 페이지를 실제로 이동시키는 navigate함수를 반환한다. 
@@ -24,19 +28,37 @@ function App() {
   };
   return (
     <>
+      <Header
+        title={"Header"}
+        leftChild={<Button text={"Left"} />}
+        rightChild={<Button text={"Right"} />}
+      />
+      <Button text={"123"} type={"DEFAULT"} onClick={() => {}} />
+
+      <Button text={"123"} type={"POSITIVE"} onClick={() => {}} />
+
+      <Button text={"123"} type={"NEGATIVE"} onClick={() => {}} />
+      {/* 
+      <div>
+        <img src={getEmotionImage(1)} />
+        <img src={getEmotionImage(2)} />
+        <img src={getEmotionImage(3)} />
+        <img src={getEmotionImage(4)} />
+        <img src={getEmotionImage(5)} />
+      </div>
       <div>
         <Link to={"/"}>Home</Link>
         <Link to={"/new"}>New</Link>
         <Link to={"/diray"}>Diray</Link>
 
-        {/* <a href="/">Home</a>
+        <a href="/">Home</a>
         <a href="/new">New</a>
         <a href="/diray">Diray</a> 
         리액트 앱 내부에서 내부 링크를 만들어야 될 경우 <a>태그가 아닌 <Link> 컴포넌트를 사용한다. 
-        */}
       </div>
 
       <button onClick={onClickButton}>New 페이지로 이동</button>
+      */}
 
       <Routes>
         <Route path="/" element={<Home />} />

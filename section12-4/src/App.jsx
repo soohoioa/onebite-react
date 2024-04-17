@@ -26,12 +26,6 @@ const mockData = [
     emotionId: 3,
     content: "3번 일기 내용",
   },
-  {
-    id: 4,
-    createdDate: new Date("2024-04-11").getTime(),
-    emotionId: 4,
-    content: "4번 일기 내용",
-  },
 ];
 
 function reducer(state, action) {
@@ -58,7 +52,6 @@ function App() {
 
   // 새로운 일기 추가
   const onCreate = (createdDate, emotionId, content) => {
-    // 새로운 일기를 추가하는 기능 emotionId
     dispatch({
       type: "CREATE",
       data: {

@@ -6,11 +6,9 @@ import { DiaryDispatchContext } from "../App";
 import { useContext } from "react";
 
 const DiaryItem = ({ id, emotionId, createdDate, content }) => {
-  // DiaryDispatchContext -> onDelete 받아오기
   const { onDelete } = useContext(DiaryDispatchContext);
   const nav = useNavigate();
 
-  // 삭제시 실행할 이벤트 함수
   const onClickDelete = () => {
     if (window.confirm("정말 삭제합니까?")) {
       onDelete(id);
@@ -36,7 +34,6 @@ const DiaryItem = ({ id, emotionId, createdDate, content }) => {
 
       <div className="button_section">
         <Button onClick={() => nav(`/edit/${id}`)} text={"수정하기"} />
-        {/* 삭제 버튼 추가 */}
         <Button type={"NEGATIVE"} onClick={onClickDelete} text={"삭제하기"} />
       </div>
     </div>

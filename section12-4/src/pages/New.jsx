@@ -8,10 +8,6 @@ import { DiaryDispatchContext } from "../App";
 const New = () => {
   const { onCreate } = useContext(DiaryDispatchContext);
   const nav = useNavigate();
-  /**
-  useNavigate() 함수에 음수를 전달하면 페이지를 뒤로 이동시켜 준다. 
-   */
-
   const onSubmit = (input) => {
     onCreate(input.createdDate.getTime(), input.emotionId, input.content);
     nav("/", { replace: true });
